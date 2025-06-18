@@ -1,0 +1,441 @@
+openapi: 3.0.3
+info:
+  title: Backend
+  description: 'Backend API'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://backend.test'
+paths:
+  /api/Auth:
+    post:
+      summary: 'Get access token'
+      operationId: getAccessToken
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: hfunk@example.org
+                password:
+                  type: string
+                  description: ''
+                  example: deserunt
+              required:
+                - email
+                - password
+      security: []
+  /api/Auth/logOut:
+    post:
+      summary: Logout
+      operationId: logout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+  /api/Auth/requester:
+    get:
+      summary: Requester
+      operationId: requester
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthenticated.
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Authentication
+  '/api/products/{product_id}/prices':
+    get:
+      summary: ''
+      operationId: getApiProductsProduct_idPrices
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthenticated.
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Product Prices'
+    parameters:
+      -
+        in: path
+        name: product_id
+        description: 'The ID of the product.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/products/{product}/prices':
+    post:
+      summary: ''
+      operationId: postApiProductsProductPrices
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Product Prices'
+    parameters:
+      -
+        in: path
+        name: product
+        description: 'The product.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/Products/products:
+    get:
+      summary: ''
+      operationId: getApiProductsProducts
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthenticated.
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Products
+    post:
+      summary: ''
+      operationId: postApiProductsProducts
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: facere
+                description:
+                  type: string
+                  description: ''
+                  example: 'Eos aut nemo debitis velit laboriosam sunt animi.'
+                price:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 80
+                currency_id:
+                  type: string
+                  description: ''
+                  example: quaerat
+                tax_cost:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 36
+                manufacturing_cost:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 53
+              required:
+                - name
+                - description
+                - price
+                - currency_id
+                - tax_cost
+                - manufacturing_cost
+  '/api/Products/products/{id}':
+    get:
+      summary: ''
+      operationId: getApiProductsProductsId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthenticated.
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Products
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the product.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/Products/{product_id}':
+    put:
+      summary: ''
+      operationId: putApiProductsProduct_id
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Products
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: laboriosam
+                description:
+                  type: string
+                  description: ''
+                  example: 'Iure perferendis ut ut explicabo expedita ab sapiente.'
+                price:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 82
+                currency_id:
+                  type: string
+                  description: ''
+                  example: null
+                tax_cost:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 3
+                manufacturing_cost:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 57
+    delete:
+      summary: ''
+      operationId: deleteApiProductsProduct_id
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Products
+    parameters:
+      -
+        in: path
+        name: product_id
+        description: 'The ID of the product.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/Users:
+    get:
+      summary: ''
+      operationId: getApiUsers
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthenticated.
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+    post:
+      summary: ''
+      operationId: postApiUsers
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: porro
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: dexter65@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: asperiores
+              required:
+                - name
+                - email
+                - password
+  '/api/Users/{id}':
+    get:
+      summary: ''
+      operationId: getApiUsersId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: Unauthenticated.
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the User.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/Users/{user_id}':
+    put:
+      summary: ''
+      operationId: putApiUsersUser_id
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: doloremque
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: price.adelbert@example.com
+              required:
+                - name
+                - email
+    delete:
+      summary: ''
+      operationId: deleteApiUsersUser_id
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Users
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: 'Product Prices'
+    description: ''
+  -
+    name: Products
+    description: ''
+  -
+    name: Users
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []
