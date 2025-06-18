@@ -24,20 +24,6 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
 
-## Estructura del Proyecto
-app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── ProductController.php
-│   │   └── ProductPriceController.php
-├── Models/
-│   ├── Product.php
-│   └── ProductPrice.php
-tests/
-├── Feature/
-│   ├── ProductApiEndToEndTest.php
-│   └── ProductPriceApiEndToEndTest.php
-
 ## Endpoints Principales
 ## Productos
 - GET /api/products - Listar todos los productos
